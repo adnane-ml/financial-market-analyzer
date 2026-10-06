@@ -1,0 +1,21 @@
+cmd: python -m pipeline.features GOOGL
+deps:
+- path: data/raw/GOOGL_ohlcv.csv
+  hash: md5
+  md5: c0f0842c5043666d889c6351df7509a0
+  size: 119281
+  isexec: true
+- path: data/raw/macro.csv
+  hash: md5
+  md5: 134fa6d1cd1af0500faf83a9d82a2362
+  size: 1693708
+- path: pipeline/features.py
+  hash: md5
+  md5: 0043dba698d417812fac9da536b96039
+  size: 3212
+  isexec: true
+outs:
+- path: data/processed/GOOGL_features.csv
+  hash: md5
+  md5: 37915a75a99914a9eaf78b0c96b2a0aa
+  size: 477829

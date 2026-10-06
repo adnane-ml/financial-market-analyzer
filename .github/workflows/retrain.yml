@@ -1,0 +1,46 @@
+name: Retrain
+
+on:
+  schedule:
+    - cron: "0 2 * * 1"   # chaque lundi à 2h UTC
+  workflow_dispatch:        # déclenchement manuel depuis GitHub
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+
+    env:
+      FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+      MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        working-directory: backend
+        run: pip install -r requirements.txt
+
+      - name: Setup DVC
+        run: pip install dvc
+
+      - name: Run DVC pipeline
+        working-directory: backend
+        run: dvc repro
+
+      - name: Push DVC artifacts
+        working-directory: backend
+        run: dvc push
+
+      - name: Commit updated metrics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add backend/data/metrics/
+          git diff --staged --quiet || git commit -m "chore: retrain metrics update [skip ci]"
+          git push

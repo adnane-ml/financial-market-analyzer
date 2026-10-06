@@ -1,0 +1,21 @@
+cmd: python -m pipeline.features AAPL
+deps:
+- path: data/raw/AAPL_ohlcv.csv
+  hash: md5
+  md5: 2066d3d5b409d822aab2f4636392a1d9
+  size: 119418
+  isexec: true
+- path: data/raw/macro.csv
+  hash: md5
+  md5: 134fa6d1cd1af0500faf83a9d82a2362
+  size: 1693708
+- path: pipeline/features.py
+  hash: md5
+  md5: 0043dba698d417812fac9da536b96039
+  size: 3212
+  isexec: true
+outs:
+- path: data/processed/AAPL_features.csv
+  hash: md5
+  md5: 258732694999e07fc413b206bdeea191
+  size: 478188

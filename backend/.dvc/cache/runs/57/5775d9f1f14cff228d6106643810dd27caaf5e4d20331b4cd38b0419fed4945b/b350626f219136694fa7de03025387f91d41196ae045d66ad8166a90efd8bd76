@@ -1,0 +1,25 @@
+cmd: python -m pipeline.train AAPL
+deps:
+- path: data/processed/AAPL_features.csv
+  hash: md5
+  md5: 258732694999e07fc413b206bdeea191
+  size: 478188
+- path: params.yaml
+  hash: md5
+  md5: 1d486843804c26e5a8f77c4a0502a570
+  size: 343
+  isexec: true
+- path: pipeline/train.py
+  hash: md5
+  md5: c4c8129e72db2d95c81735cacefd4e6d
+  size: 4419
+  isexec: true
+outs:
+- path: data/metrics/AAPL_metrics.json
+  hash: md5
+  md5: 7b44c6239bbff1ed1d7cf4b0103cd6b3
+  size: 117
+- path: models/AAPL_xgb.json
+  hash: md5
+  md5: f294edc098fdbb362fdd4d09d2d32dd7
+  size: 552788

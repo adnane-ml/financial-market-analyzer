@@ -1,0 +1,25 @@
+cmd: python -m pipeline.train GOOGL
+deps:
+- path: data/processed/GOOGL_features.csv
+  hash: md5
+  md5: 37915a75a99914a9eaf78b0c96b2a0aa
+  size: 477829
+- path: params.yaml
+  hash: md5
+  md5: 1d486843804c26e5a8f77c4a0502a570
+  size: 343
+  isexec: true
+- path: pipeline/train.py
+  hash: md5
+  md5: c4c8129e72db2d95c81735cacefd4e6d
+  size: 4419
+  isexec: true
+outs:
+- path: data/metrics/GOOGL_metrics.json
+  hash: md5
+  md5: b28e60d27ca21dd8faf0125b7bf627a5
+  size: 133
+- path: models/GOOGL_xgb.json
+  hash: md5
+  md5: d90053c7af9fa65280b611ffd351f659
+  size: 541492

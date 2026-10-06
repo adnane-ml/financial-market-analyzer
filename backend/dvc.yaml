@@ -1,0 +1,150 @@
+stages:
+  features-SPY:
+    cmd: python -m pipeline.features SPY
+    deps:
+      - pipeline/features.py
+      - data/raw/SPY_ohlcv.csv
+      - data/raw/macro.csv
+    outs:
+      - data/processed/SPY_features.csv
+
+  features-AAPL:
+    cmd: python -m pipeline.features AAPL
+    deps:
+      - pipeline/features.py
+      - data/raw/AAPL_ohlcv.csv
+      - data/raw/macro.csv
+    outs:
+      - data/processed/AAPL_features.csv
+
+  features-MSFT:
+    cmd: python -m pipeline.features MSFT
+    deps:
+      - pipeline/features.py
+      - data/raw/MSFT_ohlcv.csv
+      - data/raw/macro.csv
+    outs:
+      - data/processed/MSFT_features.csv
+
+  features-GOOGL:
+    cmd: python -m pipeline.features GOOGL
+    deps:
+      - pipeline/features.py
+      - data/raw/GOOGL_ohlcv.csv
+      - data/raw/macro.csv
+    outs:
+      - data/processed/GOOGL_features.csv
+
+  features-NVDA:
+    cmd: python -m pipeline.features NVDA
+    deps:
+      - pipeline/features.py
+      - data/raw/NVDA_ohlcv.csv
+      - data/raw/macro.csv
+    outs:
+      - data/processed/NVDA_features.csv
+
+  train-SPY:
+    cmd: python -m pipeline.train SPY
+    deps:
+      - pipeline/train.py
+      - params.yaml
+      - data/processed/SPY_features.csv
+    outs:
+      - models/SPY_xgb.json
+    metrics:
+      - data/metrics/SPY_metrics.json:
+          cache: false
+
+  train-AAPL:
+    cmd: python -m pipeline.train AAPL
+    deps:
+      - pipeline/train.py
+      - params.yaml
+      - data/processed/AAPL_features.csv
+    outs:
+      - models/AAPL_xgb.json
+    metrics:
+      - data/metrics/AAPL_metrics.json:
+          cache: false
+
+  train-MSFT:
+    cmd: python -m pipeline.train MSFT
+    deps:
+      - pipeline/train.py
+      - params.yaml
+      - data/processed/MSFT_features.csv
+    outs:
+      - models/MSFT_xgb.json
+    metrics:
+      - data/metrics/MSFT_metrics.json:
+          cache: false
+
+  train-GOOGL:
+    cmd: python -m pipeline.train GOOGL
+    deps:
+      - pipeline/train.py
+      - params.yaml
+      - data/processed/GOOGL_features.csv
+    outs:
+      - models/GOOGL_xgb.json
+    metrics:
+      - data/metrics/GOOGL_metrics.json:
+          cache: false
+
+  train-NVDA:
+    cmd: python -m pipeline.train NVDA
+    deps:
+      - pipeline/train.py
+      - params.yaml
+      - data/processed/NVDA_features.csv
+    outs:
+      - models/NVDA_xgb.json
+    metrics:
+      - data/metrics/NVDA_metrics.json:
+          cache: false
+
+  drift-SPY:
+    cmd: python -m monitoring.drift SPY
+    deps:
+      - monitoring/drift.py
+      - data/processed/SPY_features.csv
+    outs:
+      - data/reports/SPY_drift_report.html:
+          cache: false
+
+  drift-AAPL:
+    cmd: python -m monitoring.drift AAPL
+    deps:
+      - monitoring/drift.py
+      - data/processed/AAPL_features.csv
+    outs:
+      - data/reports/AAPL_drift_report.html:
+          cache: false
+
+  drift-MSFT:
+    cmd: python -m monitoring.drift MSFT
+    deps:
+      - monitoring/drift.py
+      - data/processed/MSFT_features.csv
+    outs:
+      - data/reports/MSFT_drift_report.html:
+          cache: false
+
+  drift-GOOGL:
+    cmd: python -m monitoring.drift GOOGL
+    deps:
+      - monitoring/drift.py
+      - data/processed/GOOGL_features.csv
+    outs:
+      - data/reports/GOOGL_drift_report.html:
+          cache: false
+
+  drift-NVDA:
+    cmd: python -m monitoring.drift NVDA
+    deps:
+      - monitoring/drift.py
+      - data/processed/NVDA_features.csv
+    outs:
+      - data/reports/NVDA_drift_report.html:
+          cache: false

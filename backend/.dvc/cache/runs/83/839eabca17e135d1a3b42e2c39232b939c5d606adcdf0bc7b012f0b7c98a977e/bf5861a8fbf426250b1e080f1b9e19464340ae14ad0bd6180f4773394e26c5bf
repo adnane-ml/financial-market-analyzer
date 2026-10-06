@@ -1,0 +1,16 @@
+cmd: python -m pipeline.ingest
+deps:
+- path: pipeline/ingest.py
+  hash: md5
+  md5: 57f46640d445f28c07bdb698bfb25011
+  size: 1370
+  isexec: true
+outs:
+- path: data/raw/SPY_ohlcv.csv
+  hash: md5
+  md5: fa15171b97203f0aeeb9ede19de0a736
+  size: 42
+- path: data/raw/macro.csv
+  hash: md5
+  md5: 134fa6d1cd1af0500faf83a9d82a2362
+  size: 1693708

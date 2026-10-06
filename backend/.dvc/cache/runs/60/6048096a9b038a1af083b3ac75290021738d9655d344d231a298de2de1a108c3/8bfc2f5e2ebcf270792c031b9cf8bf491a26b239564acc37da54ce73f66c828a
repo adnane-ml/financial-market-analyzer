@@ -1,0 +1,25 @@
+cmd: python -m pipeline.train NVDA
+deps:
+- path: data/processed/NVDA_features.csv
+  hash: md5
+  md5: ba916cea7bfd800a4307e22316214eda
+  size: 478038
+- path: params.yaml
+  hash: md5
+  md5: 1d486843804c26e5a8f77c4a0502a570
+  size: 343
+  isexec: true
+- path: pipeline/train.py
+  hash: md5
+  md5: c4c8129e72db2d95c81735cacefd4e6d
+  size: 4419
+  isexec: true
+outs:
+- path: data/metrics/NVDA_metrics.json
+  hash: md5
+  md5: e951e3c5307616efe75b09c059727843
+  size: 116
+- path: models/NVDA_xgb.json
+  hash: md5
+  md5: 69636d348a7f161ac973e7263b39c62c
+  size: 544988

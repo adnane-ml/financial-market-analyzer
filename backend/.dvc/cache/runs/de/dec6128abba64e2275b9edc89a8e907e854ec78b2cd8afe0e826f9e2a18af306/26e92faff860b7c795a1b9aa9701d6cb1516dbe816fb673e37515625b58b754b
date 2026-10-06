@@ -1,0 +1,20 @@
+cmd: python -m pipeline.features
+deps:
+- path: data/raw/SPY_ohlcv.csv
+  hash: md5
+  md5: fa15171b97203f0aeeb9ede19de0a736
+  size: 42
+- path: data/raw/macro.csv
+  hash: md5
+  md5: 134fa6d1cd1af0500faf83a9d82a2362
+  size: 1693708
+- path: pipeline/features.py
+  hash: md5
+  md5: 0043dba698d417812fac9da536b96039
+  size: 3212
+  isexec: true
+outs:
+- path: data/processed/SPY_features.csv
+  hash: md5
+  md5: 67564ecfe9b554fde0758ce2f80b41bd
+  size: 216

@@ -1,0 +1,25 @@
+cmd: python -m pipeline.train MSFT
+deps:
+- path: data/processed/MSFT_features.csv
+  hash: md5
+  md5: a00438a131a26b44f74f284f2dbd66cc
+  size: 475656
+- path: params.yaml
+  hash: md5
+  md5: 1d486843804c26e5a8f77c4a0502a570
+  size: 343
+  isexec: true
+- path: pipeline/train.py
+  hash: md5
+  md5: c4c8129e72db2d95c81735cacefd4e6d
+  size: 4419
+  isexec: true
+outs:
+- path: data/metrics/MSFT_metrics.json
+  hash: md5
+  md5: 17aae167464f0bc20c6c711845e5cfe8
+  size: 131
+- path: models/MSFT_xgb.json
+  hash: md5
+  md5: 96ab5d08e6f6e5939ba7d8f22cc5b390
+  size: 545663

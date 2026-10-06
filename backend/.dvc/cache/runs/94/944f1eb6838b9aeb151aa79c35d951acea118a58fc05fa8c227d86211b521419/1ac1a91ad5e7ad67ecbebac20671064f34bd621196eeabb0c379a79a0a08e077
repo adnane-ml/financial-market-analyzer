@@ -1,0 +1,21 @@
+cmd: python -m pipeline.features NVDA
+deps:
+- path: data/raw/NVDA_ohlcv.csv
+  hash: md5
+  md5: 5a95b82fc6182505f5af5308a3954d8c
+  size: 120567
+  isexec: true
+- path: data/raw/macro.csv
+  hash: md5
+  md5: 134fa6d1cd1af0500faf83a9d82a2362
+  size: 1693708
+- path: pipeline/features.py
+  hash: md5
+  md5: 0043dba698d417812fac9da536b96039
+  size: 3212
+  isexec: true
+outs:
+- path: data/processed/NVDA_features.csv
+  hash: md5
+  md5: ba916cea7bfd800a4307e22316214eda
+  size: 478038

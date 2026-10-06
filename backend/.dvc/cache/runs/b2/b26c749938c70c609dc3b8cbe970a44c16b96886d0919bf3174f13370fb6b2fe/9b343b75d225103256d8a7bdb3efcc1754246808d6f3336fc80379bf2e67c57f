@@ -1,0 +1,25 @@
+cmd: python -m pipeline.train SPY
+deps:
+- path: data/processed/SPY_features.csv
+  hash: md5
+  md5: f2c61026a08ad649347f10d792f538e5
+  size: 474680
+- path: params.yaml
+  hash: md5
+  md5: 1d486843804c26e5a8f77c4a0502a570
+  size: 343
+  isexec: true
+- path: pipeline/train.py
+  hash: md5
+  md5: c4c8129e72db2d95c81735cacefd4e6d
+  size: 4419
+  isexec: true
+outs:
+- path: data/metrics/SPY_metrics.json
+  hash: md5
+  md5: e91f44781040a7e8943e9f53cf109b22
+  size: 116
+- path: models/SPY_xgb.json
+  hash: md5
+  md5: fb9fe740d3a7cbb5b8ab6a4e39109956
+  size: 541214

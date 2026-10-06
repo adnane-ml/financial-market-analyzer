@@ -1,0 +1,21 @@
+cmd: python -m pipeline.features MSFT
+deps:
+- path: data/raw/MSFT_ohlcv.csv
+  hash: md5
+  md5: a90e2ae272077ee321d23921aa23897a
+  size: 118134
+  isexec: true
+- path: data/raw/macro.csv
+  hash: md5
+  md5: 134fa6d1cd1af0500faf83a9d82a2362
+  size: 1693708
+- path: pipeline/features.py
+  hash: md5
+  md5: 0043dba698d417812fac9da536b96039
+  size: 3212
+  isexec: true
+outs:
+- path: data/processed/MSFT_features.csv
+  hash: md5
+  md5: a00438a131a26b44f74f284f2dbd66cc
+  size: 475656
