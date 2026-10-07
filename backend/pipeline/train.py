@@ -42,10 +42,11 @@ def load_data(ticker: str) -> tuple[pd.DataFrame, pd.Series]:
     return X, y
 
 
-def train(ticker: str = None):
-    params    = load_params()
-    ticker    = ticker or params["ticker"]
-    n_splits  = params["train"]["n_splits"]
+def train(ticker: str | None = None) -> tuple:
+    params   = load_params()
+    if ticker is None:
+        raise ValueError("ticker is required")
+    n_splits = params["train"]["n_splits"]
 
     xgb_params = {
         "n_estimators":      params["train"]["n_estimators"],
