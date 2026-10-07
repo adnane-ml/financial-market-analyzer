@@ -1,9 +1,11 @@
+import os
+
+import pandas as pd
+import xgboost as xgb
 from fastapi import APIRouter, Depends, HTTPException
+
 from app.core.security import get_current_user
 from app.schemas.predict import PredictionResponse
-import xgboost as xgb
-import pandas as pd
-import os
 
 router = APIRouter()
 

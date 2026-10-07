@@ -1,9 +1,10 @@
 import os
+
 import pandas as pd
-from evidently.report import Report
+from evidently import ColumnMapping
 from evidently.metric_preset import DataDriftPreset, DataQualityPreset
 from evidently.metrics import DatasetDriftMetric
-from evidently import ColumnMapping
+from evidently.report import Report
 
 PROCESSED_DIR = os.path.join(os.path.dirname(__file__), "../data/processed")
 REPORTS_DIR = os.path.join(os.path.dirname(__file__), "../data/reports")

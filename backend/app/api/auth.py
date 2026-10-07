@@ -1,16 +1,20 @@
-from fastapi import APIRouter, HTTPException, status, Request, Response, Depends, Cookie
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
+from fastapi import APIRouter, Cookie, Depends, HTTPException, Request, Response, status
 from slowapi import Limiter
 from slowapi.util import get_remote_address
-from app.schemas.auth import UserCreate, UserLogin, Token
-from app.core.security import (
-    hash_password, verify_password,
-    create_access_token, create_refresh_token, decode_token
-)
-from app.db.session import get_db
-from app.db.models import User
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.core.config import settings
+from app.core.security import (
+    create_access_token,
+    create_refresh_token,
+    decode_token,
+    hash_password,
+    verify_password,
+)
+from app.db.models import User
+from app.db.session import get_db
+from app.schemas.auth import Token, UserCreate, UserLogin
 
 limiter = Limiter(key_func=get_remote_address)
 router = APIRouter(prefix="/auth", tags=["auth"])

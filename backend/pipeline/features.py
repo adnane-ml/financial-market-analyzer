@@ -1,7 +1,8 @@
-import pandas as pd
-import numpy as np
 import os
 import sys
+
+import numpy as np
+import pandas as pd
 
 DATA_RAW = os.path.join(os.path.dirname(__file__), "../data/raw")
 DATA_PROCESSED = os.path.join(os.path.dirname(__file__), "../data/processed")

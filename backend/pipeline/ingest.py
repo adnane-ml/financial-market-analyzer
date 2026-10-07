@@ -1,7 +1,8 @@
 import os
+
+import fredapi
 import pandas as pd
 import yfinance as yf
-import fredapi
 
 DATA_RAW = os.path.join(os.path.dirname(__file__), "../data/raw")
 os.makedirs(DATA_RAW, exist_ok=True)
