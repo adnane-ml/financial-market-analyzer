@@ -1,0 +1,11 @@
+line-length = 120
+
+[lint]
+select = ["E", "F", "I", "B", "RUF"]
+ignore = [
+    "B008",    # FastAPI pattern — Depends() in function arguments is intentional
+    "DTZ005",  # datetime.now() without tz — acceptable for JWT expiry
+]
+
+[lint.isort]
+known-first-party = ["app", "pipeline", "monitoring"]
